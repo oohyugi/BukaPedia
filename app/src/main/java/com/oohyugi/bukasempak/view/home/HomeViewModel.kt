@@ -1,8 +1,8 @@
 package com.oohyugi.bukasempak.view.home
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.ViewModel;
 import android.util.Log
 import com.google.gson.Gson
 import com.oohyugi.bukasempak.api.base.MyResult

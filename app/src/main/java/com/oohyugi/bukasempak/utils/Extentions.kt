@@ -2,9 +2,9 @@ package com.oohyugi.bukasempak.utils
 
 import android.content.Context
 import android.graphics.Paint
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentTransaction
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
@@ -34,7 +34,7 @@ fun Context.readJSONFromAsset(fileName:String): String? {
     return json
 }
 
-fun FragmentActivity.replaceFragment( fragment: Fragment?, idContainer: Int, tag: String?) {
+fun FragmentActivity.replaceFragment(fragment: Fragment?, idContainer: Int, tag: String?) {
     this.supportFragmentManager?.beginTransaction()
         ?.replace(idContainer, fragment!!, tag)
         ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)

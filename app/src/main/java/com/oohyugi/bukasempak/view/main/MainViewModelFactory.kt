@@ -1,7 +1,7 @@
 package com.oohyugi.bukasempak.view.main
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 /**
  * Created by oohyugi on 2019-05-01.

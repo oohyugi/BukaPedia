@@ -2,14 +2,14 @@ package com.oohyugi.bukasempak.view.home.menu
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.support.v7.widget.DialogTitle
+import androidx.appcompat.widget.DialogTitle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.view.LayoutInflater
 import android.widget.TextView
 import com.oohyugi.bukasempak.R
-import android.support.v4.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.getSystemService
 import java.security.AccessController.getContext
 
 

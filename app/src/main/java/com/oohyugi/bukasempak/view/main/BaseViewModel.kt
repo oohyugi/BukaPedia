@@ -1,8 +1,8 @@
 package com.oohyugi.bukasempak.view.main
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.ViewModel
 
 /**
  * Created by oohyugi on 2019-05-01.

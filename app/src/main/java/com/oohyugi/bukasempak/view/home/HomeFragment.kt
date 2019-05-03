@@ -1,12 +1,12 @@
 package com.oohyugi.bukasempak.view.home
 
 //import android.arch.lifecycle.ViewModelProviders
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -70,7 +70,11 @@ class HomeFragment : Fragment() {
 
     private fun initHome() {
         adapter = HomeListAdapterBL(activity!!,mListHome)
-        val layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        val layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
         rvHome.layoutManager = layoutManager
         rvHome.adapter = adapter
         rvHome.addItemDecoration(MarginItemDecoration(14))

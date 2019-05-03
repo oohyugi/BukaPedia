@@ -5,4 +5,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_title_banner">Spesial Untukmu</string>
+    <string name="berakhir">Berakhir</string>
+    <string name="flashdeal">FlashDeal</string>
+    <string name="flasdeal_sub_one">Berakhir Dalam</string>
 </resources>

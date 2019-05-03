@@ -2,8 +2,7 @@ package com.oohyugi.bukasempak.view.home
 
 import android.app.Activity
 import android.graphics.Color
-import android.support.v4.view.ViewPager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +11,12 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.oohyugi.bukasempak.R
 import com.oohyugi.bukasempak.model.HomeMdl
-import com.oohyugi.bukasempak.view.home.slider.SliderPagerAdapter
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.ImageView
-import com.oohyugi.bukasempak.utils.CircularViewPagerHandler
 import com.oohyugi.bukasempak.utils.MarginItemDecoration
 import com.oohyugi.bukasempak.view.home.product.ProductListAdapter
-import android.support.v4.view.animation.FastOutLinearInInterpolator
+import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import kotlin.math.abs
 
 
@@ -154,10 +150,14 @@ class HomeListAdapter(private val context: Activity, private val list: List<Home
 
 
         holder.lyHome.setBackgroundColor(Color.parseColor(item.bgColor))
-        val view = LayoutInflater.from(context).inflate(R.layout.home_item_product,null,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.home_item_product_horizontal,null,false)
 
         val rvProduct = view.findViewById<RecyclerView>(R.id.rvProduct)
-        val layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        val layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
         productListAdapter = ProductListAdapter(context, item.items!!, item.typeItems)
         rvProduct.layoutManager = layoutManager
         rvProduct.adapter = productListAdapter
@@ -176,10 +176,14 @@ class HomeListAdapter(private val context: Activity, private val list: List<Home
     private fun initLayoutProductDescLeft(holder: ViewHolderDescLeft, item: HomeMdl) {
 
         holder.lyHome.setBackgroundColor(Color.parseColor(item.bgColor))
-        val view = LayoutInflater.from(context).inflate(R.layout.home_item_product,null,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.home_item_product_horizontal,null,false)
 
         val rvProduct = view.findViewById<RecyclerView>(R.id.rvProduct)
-        val layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        val layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
 //        layoutManager.reverseLayout = true
         productListAdapter = ProductListAdapter(context,item.items!!,item.typeItems)
         rvProduct.layoutManager = layoutManager
@@ -246,8 +250,6 @@ class HomeListAdapter(private val context: Activity, private val list: List<Home
         holder.lyContainer.addView(view)
     }
 
-
-    lateinit var sliderPagerAdapter: SliderPagerAdapter
     private fun initLayoutSlider(holder: ViewHolder, item: HomeMdl) {
 
 //        val manager = (context as AppCompatActivity).supportFragmentManager

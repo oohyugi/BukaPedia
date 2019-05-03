@@ -1,14 +1,14 @@
 package com.oohyugi.bukasempak.view.main
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.Snackbar
-import android.support.v4.view.ViewCompat
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.snackbar.Snackbar
+import androidx.core.view.ViewCompat
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         this.replaceFragment(HomeFragment.newInstance(),R.id.main_container,"home")
 
-        appBarLayout?.addOnOffsetChangedListener(object :AppBarLayout.OnOffsetChangedListener{
+        appBarLayout?.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener{
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onOffsetChanged(appBar: AppBarLayout?, verticalOffset: Int) {
                 if (Math.abs(verticalOffset)-appBarLayout!!.totalScrollRange == 0)
