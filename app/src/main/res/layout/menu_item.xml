@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:paddingLeft="@dimen/size14dp"
+        android:paddingRight="@dimen/size14dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        >
+
+    <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="@dimen/sizeIconHomeHorizontal"
+            android:layout_height="@dimen/sizeIconHomeHorizontal"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_circular"
+            />
+
+    <TextView
+            android:layout_marginTop="4dp"
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="Barang Favorit"
+            android:textSize="11sp"
+            android:textColor="@color/softBlack"
+            />
+
+
+</LinearLayout>

@@ -1,0 +1,184 @@
+[
+  {
+    "type"  : "default",
+    "type_items"  : "single_line_icon",
+    "id"    : 1,
+    "title" : "Favorit",
+    "items" : [
+      {
+        "id"    : 1,
+        "title" : "BukaMart",
+        "icon"  : "ic_bukamart",
+        "img_url": ""
+      },
+      {
+        "id"    : 2,
+        "title" : "Gratis Ongkir",
+        "icon"  : "ic_gratis_ongkir",
+        "img_url": ""
+      },
+      {
+        "id"    : 3,
+        "title" : "VoucherKu",
+        "icon"  : "ic_voucherku",
+        "img_url": ""
+      },
+      {
+        "id"    : 4,
+        "title" : "Barang Favorit",
+        "icon"  : "ic_barang_favorit",
+        "img_url": ""
+      }
+    ]
+
+  },
+  {
+    "type"  : "slider",
+    "type_items": "slider",
+    "id"    : 2,
+    "title" : "Spesial Untukmu",
+    "items" : [
+      {
+        "id"    : 1,
+        "title" : "BukaMart",
+        "icon"  : "ic_bukamart",
+        "img_url": "https://tvlk.imgix.net/imageResource/2019/04/24/1556076934031-013c250aa21d1394d4e3bc3e63c745fd.jpeg?auto=compress%2Cformat&cs=srgb&fm=pjpg&ixlib=java-1.1.12&q=75"
+      },
+      {
+        "id"    : 2,
+        "title" : "Gratis Ongkir",
+        "icon"  : "ic_gratis_ongkir",
+        "img_url": "https://s4.bukalapak.com/uploads/flash_banner/41483/s-824-392/Banner_2pesta.jpg.webp"
+      },
+      {
+        "id"    : 3,
+        "title" : "VoucherKu",
+        "icon"  : "ic_voucherku",
+        "img_url": "https://s4.bukalapak.com/uploads/flash_banner/41483/s-824-392/Banner_2pesta.jpg.webp"
+      },
+      {
+        "id"    : 4,
+        "title" : "Barang Favorit",
+        "icon"  : "ic_barang_favorit",
+        "img_url": "https://s4.bukalapak.com/uploads/flash_banner/41483/s-824-392/Banner_2pesta.jpg.webp"
+      }
+    ]
+
+  },
+  {
+    "type"  : "favorit",
+    "type_items": "two_line_icon",
+    "id"    : 3,
+    "title" : "Menu Favorit",
+    "items" : [
+      {
+        "id"    : 1,
+        "title" : "BukaMart",
+        "icon"  : "ic_bukamart",
+        "img_url": "https://tvlk.imgix.net/imageResource/2019/04/24/1556076934031-013c250aa21d1394d4e3bc3e63c745fd.jpeg?auto=compress%2Cformat&cs=srgb&fm=pjpg&ixlib=java-1.1.12&q=75"
+      },
+      {
+        "id"    : 2,
+        "title" : "Gratis Ongkir",
+        "icon"  : "ic_gratis_ongkir",
+        "img_url": "https://s4.bukalapak.com/uploads/flash_banner/41483/s-824-392/Banner_2pesta.jpg.webp"
+      },
+      {
+        "id"    : 3,
+        "title" : "VoucherKu",
+        "icon"  : "ic_voucherku",
+        "img_url": "https://s4.bukalapak.com/uploads/flash_banner/41483/s-824-392/Banner_2pesta.jpg.webp"
+      },
+      {
+        "id"    : 4,
+        "title" : "Barang Favorit",
+        "icon"  : "ic_barang_favorit",
+        "img_url": "https://s4.bukalapak.com/uploads/flash_banner/41483/s-824-392/Banner_2pesta.jpg.webp"
+      }
+    ]
+
+  },
+  {
+    "type"  : "product",
+    "type_items": "flash_deal",
+    "id"    : 4,
+    "title" : "Serba Serbi Kebutuhan Jelang Puasa",
+    "sub_title" : "Harga Mulai",
+    "headline" : "5K",
+    "img_url": "",
+    "background_color" : "#bbdefb",
+    "items" : [
+      {
+        "id"    : 1,
+        "title" : "SEPATU SNEAKERS CONVERSE HIGH CDG KJ",
+        "icon"  : "ic_bukamart",
+        "img_url": "https://s3.bukalapak.com/img/3192616987/w-300/SEPATU_SNEAKERS_CONVERSE_HIGH_CDG_KJ.jpeg.webp",
+        "price" : 200000
+      },
+      {
+        "id"    : 2,
+        "title" : "Gratis Ongkir",
+        "icon"  : "ic_gratis_ongkir",
+        "img_url": "https://s3.bukalapak.com/img/3192616987/w-300/SEPATU_SNEAKERS_CONVERSE_HIGH_CDG_KJ.jpeg.webp",
+        "price" : 200000
+      },
+      {
+        "id"    : 3,
+        "title" : "VoucherKu",
+        "icon"  : "ic_voucherku",
+        "img_url": "https://s3.bukalapak.com/img/3192616987/w-300/SEPATU_SNEAKERS_CONVERSE_HIGH_CDG_KJ.jpeg.webp",
+        "price" : 200000
+      },
+      {
+        "id"    : 4,
+        "title" : "Barang Favorit",
+        "icon"  : "ic_barang_favorit",
+        "img_url": "https://s3.bukalapak.com/img/3192616987/w-300/SEPATU_SNEAKERS_CONVERSE_HIGH_CDG_KJ.jpeg.webp",
+        "price" : 200000
+      }
+    ]
+
+  },
+  {
+    "type"  : "product",
+    "type_items": "list_horizontal",
+    "id"    : 5,
+    "title" : "Spesial Untukmu",
+    "sub_title" : "Cicilan 0%",
+    "headline" : "5K",
+    "background_color" : "#c5cae9",
+    "img_url": "",
+    "items" : [
+      {
+        "id"    : 1,
+        "title" : "SEPATU SNEAKERS CONVERSE HIGH CDG KJ",
+        "icon"  : "ic_bukamart",
+        "img_url": "https://s3.bukalapak.com/img/3192616987/w-300/SEPATU_SNEAKERS_CONVERSE_HIGH_CDG_KJ.jpeg.webp",
+        "price" : 200000
+      },
+      {
+        "id"    : 2,
+        "title" : "Gratis Ongkir",
+        "icon"  : "ic_gratis_ongkir",
+        "img_url": "https://s3.bukalapak.com/img/3192616987/w-300/SEPATU_SNEAKERS_CONVERSE_HIGH_CDG_KJ.jpeg.webp",
+        "price" : 200000
+      },
+      {
+        "id"    : 3,
+        "title" : "VoucherKu",
+        "icon"  : "ic_voucherku",
+        "img_url": "https://s3.bukalapak.com/img/3192616987/w-300/SEPATU_SNEAKERS_CONVERSE_HIGH_CDG_KJ.jpeg.webp",
+        "price" : 200000
+      },
+      {
+        "id"    : 4,
+        "title" : "Barang Favorit",
+        "icon"  : "ic_barang_favorit",
+        "img_url": "https://s3.bukalapak.com/img/3192616987/w-300/SEPATU_SNEAKERS_CONVERSE_HIGH_CDG_KJ.jpeg.webp",
+        "price" : 200000
+      }
+    ]
+
+  }
+
+]

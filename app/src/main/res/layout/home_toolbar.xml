@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        >
+
+   <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="horizontal"
+           >
+      <EditText
+              android:layout_centerVertical="true"
+              android:layout_gravity="center"
+              android:id="@+id/etSearchBar"
+              android:visibility="gone"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/shape_search"
+              android:drawableLeft="@drawable/ic_search_black_24dp"
+              android:padding="@dimen/size8dp"
+              android:drawablePadding="@dimen/size8dp"
+              android:hint="@string/txt_search_hint"
+              />
+      <LinearLayout
+              android:layout_centerVertical="true"
+              android:visibility="visible"
+              android:id="@+id/ly_dana"
+              android:layout_gravity="center"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+         <de.hdodenhof.circleimageview.CircleImageView
+                 android:layout_width="24dp"
+                 android:layout_height="24dp"
+                 android:src="@drawable/ic_circular_accent"
+                 />
+         <TextView
+                 android:layout_marginLeft="@dimen/size12dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:layout_gravity="center"
+                 android:textStyle="bold"
+                 android:textColor="@color/black"
+                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                 android:text="DANA"/>
+      </LinearLayout>
+
+
+   </RelativeLayout>
+
+
+</android.support.v7.widget.Toolbar>

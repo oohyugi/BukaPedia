@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/ly_home"
+                android:paddingBottom="10dp"
+                android:background="@color/colorAccent"
+        >
+
+    <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/ly_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/size14dp"
+
+            >
+
+        <TextView
+                android:visibility="invisible"
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                />
+
+        <TextView
+                android:id="@+id/tvMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size14dp"
+                android:text="Lihat Semua"
+                android:textSize="12sp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/size8dp"
+                android:paddingRight="@dimen/size8dp"
+                android:visibility="invisible"
+                android:background="@drawable/shape_stroke_see_all"
+                android:textColor="@color/white"
+                />
+    </LinearLayout>
+
+        <RelativeLayout
+                android:layout_below="@+id/ly_header"
+                android:id="@+id/ly_desc_left"
+                android:layout_width="150dp"
+                android:layout_height="250dp"
+                android:paddingTop="@dimen/size14dp"
+                android:paddingBottom="@dimen/size14dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:orientation="vertical"
+                >
+            <TextView
+                    android:layout_below="@+id/ivHomeLeft"
+                    android:id="@+id/tvTitleLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:text="FLASH DEAL"
+                    android:lineSpacingExtra="0.1dp"
+                    android:textStyle="bold"
+                   android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/white"
+                    />
+
+            <TextView
+                    android:id="@+id/tvSubTitleLeft"
+                    android:layout_below="@+id/tvTitleLeft"
+                    android:layout_marginTop="@dimen/size14dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Berakhir dalam"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="0.25dp"
+                    android:textColor="@color/white"
+                    />
+            <TextView
+                    android:id="@+id/tvPriceLeft"
+                    android:layout_below="@+id/tvSubTitleLeft"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    tools:text="Title"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                     android:textColor="@color/white"
+                    />
+
+            <ImageView
+                    android:id="@+id/ivHomeLeft"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                   android:src="@drawable/product_sample"
+                    />
+
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/size8dp"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/tvMoreLeft"
+                    android:layout_centerHorizontal="true"
+                    android:text="Lihat Semua"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/shape_stroke_see_all"/>
+
+        </RelativeLayout>
+
+
+            <LinearLayout
+                    android:layout_below="@+id/ly_header"
+                    android:id="@+id/ly_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+          android:id="@+id/action_home"
+          android:icon="@drawable/ic_home_black_24dp"/>
+
+    <item android:title="Discover"
+          android:id="@+id/action_discover"
+          android:icon="@drawable/ic_international_delivery"/>
+
+    <item android:title="Official"
+          android:id="@+id/action_official"
+          android:icon="@drawable/ic_check"/>
+    <item android:title="Home"
+          android:id="@+id/action_transaction"
+          android:icon="@drawable/ic_swap_horiz_black_24dp"/>
+    <item android:title="Akun"
+          android:id="@+id/action_akun"
+          android:icon="@drawable/ic_person_black_24dp"/>
+</menu>

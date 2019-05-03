@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size14dp"
+        android:paddingBottom="@dimen/size8dp"
+        android:background="@color/white"
+      >
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+              android:paddingLeft="@dimen/size14dp"
+                android:paddingRight="@dimen/size14dp"
+                android:layout_height="wrap_content"
+                >
+            <ImageView
+                    android:layout_width="@dimen/sizeIconHomeHorizontal"
+                    android:layout_height="@dimen/sizeIconHomeHorizontal"
+                    android:src="@drawable/ic_circular"
+                    />
+            <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BukaMart"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:lines="2"
+                    android:textColor="@color/softBlack"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+              android:paddingLeft="@dimen/size14dp"
+                android:paddingRight="@dimen/size14dp"
+                android:layout_height="wrap_content"
+                >
+            <ImageView
+                    android:layout_width="@dimen/sizeIconHomeHorizontal"
+                    android:layout_height="@dimen/sizeIconHomeHorizontal"
+                    android:src="@drawable/ic_circular"
+                    />
+            <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gratis Ongkir"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:lines="2"
+                    android:textColor="@color/softBlack"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+              android:paddingLeft="@dimen/size14dp"
+                android:paddingRight="@dimen/size14dp"
+                android:layout_height="wrap_content"
+                >
+            <ImageView
+                    android:layout_width="@dimen/sizeIconHomeHorizontal"
+                    android:layout_height="@dimen/sizeIconHomeHorizontal"
+                    android:src="@drawable/ic_circular"
+                    />
+            <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VoucherKu"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:lines="2"
+                    android:textColor="@color/softBlack"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+              android:paddingLeft="@dimen/size14dp"
+                android:paddingRight="@dimen/size14dp"
+                android:layout_height="wrap_content"
+                >
+            <ImageView
+                    android:layout_width="@dimen/sizeIconHomeHorizontal"
+                    android:layout_height="@dimen/sizeIconHomeHorizontal"
+                    android:src="@drawable/ic_circular"
+                    />
+            <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Barang Favorit"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:lines="2"
+                    android:textColor="@color/softBlack"/>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

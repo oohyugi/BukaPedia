@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="size12dp">12dp</dimen>
+    <dimen name="size8dp">8dp</dimen>
+    <dimen name="size14dp">14dp</dimen>
+    <dimen name="sizeIconHomeHorizontal">46dp</dimen>
+</resources>

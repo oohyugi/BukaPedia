@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/ly_home"
+                android:background="@color/white"
+        >
+
+    <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/ly_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/size14dp"
+
+            >
+
+        <TextView
+                android:visibility="invisible"
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                tools:text="Title"
+                android:textColor="@color/black"
+                />
+
+        <TextView
+                android:id="@+id/tvMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat Semua"
+                android:layout_marginLeft="@dimen/size14dp"
+                android:textColor="@color/colorAccent"
+                />
+    </LinearLayout>
+
+        <RelativeLayout
+                android:id="@+id/ly_desc_left"
+                android:layout_width="150dp"
+                android:layout_height="320dp"
+                android:paddingTop="@dimen/size14dp"
+                android:paddingBottom="@dimen/size14dp"
+                android:orientation="vertical"
+                >
+            <TextView
+                    android:id="@+id/tvTitleLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    tools:text="Title"
+                    android:lineSpacingExtra="0.1dp"
+                    android:textColor="@color/black"
+                    />
+
+            <TextView
+                    android:layout_below="@+id/tvTitleLeft"
+                    android:layout_marginTop="@dimen/size8dp"
+                    android:id="@+id/tvSubTitleLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="SubTitle"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="0.25dp"
+                    android:textColor="@color/black"
+                    />
+            <TextView
+                    android:layout_below="@+id/tvSubTitleLeft"
+                    android:visibility="visible"
+                    android:id="@+id/tvPriceLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    tools:text="Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/black"
+                    />
+
+            <ImageView
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/ivHomeLeft"
+                   android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   android:src="@drawable/product_sample"
+                    />
+
+
+
+        </RelativeLayout>
+
+
+            <LinearLayout
+                    android:layout_below="@+id/ly_header"
+                    android:id="@+id/ly_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    />
+
+
+
+</RelativeLayout>

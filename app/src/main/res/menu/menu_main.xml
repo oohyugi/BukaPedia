@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.oohyugi.bukasempak.view.main.MainActivity">
+    <item
+        android:id="@+id/action_qrCode"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_qrcode_scan"
+        android:title="qrcode"
+        app:showAsAction="always" />
+    <item
+            android:id="@+id/action_notif"
+            android:orderInCategory="100"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="notification"
+            app:showAsAction="always" />
+    <item
+            android:id="@+id/action_message"
+            android:orderInCategory="100"
+            android:icon="@drawable/ic_message_black_24dp"
+            android:title="message"
+            app:showAsAction="always" />
+    <item
+            android:id="@+id/action_cart"
+            android:orderInCategory="100"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="cart"
+            app:showAsAction="always" />
+</menu>
