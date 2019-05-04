@@ -20,8 +20,21 @@ class ViewHolderMenu(itemView: View,val context: Context) : RecyclerView.ViewHol
     var lyHome: RelativeLayout = itemView.findViewById(R.id.ly_home)
     lateinit var menuAdapter: MenuListAdapter
     var mListMenu: MutableList<MenuItemMdl> = mutableListOf()
+    var i =0
     fun setItem(list: MutableList<MenuItemMdl>) {
-        mListMenu.addAll(list)
+        mListMenu.clear()
+        i=0
+        for (item in list) {
+            i++
+            if (i < 9) {
+                mListMenu.add(item)
+
+            }
+        }
+        if (mListMenu.isNotEmpty()){
+            lyHome.visibility = View.VISIBLE
+        }
+
         menuAdapter.notifyDataSetChanged()
         tvTitle.text = "E-Voucher, tiket,& investasi"
         tvLoadMore.visibility = View.GONE
@@ -32,6 +45,7 @@ class ViewHolderMenu(itemView: View,val context: Context) : RecyclerView.ViewHol
 
 
     init {
+        lyHome.visibility = View.GONE
         val view = LayoutInflater.from(context).inflate(R.layout.home_item_menu, null, false)
 
         val rvMenu = view.findViewById<RecyclerView>(R.id.rvMenu)

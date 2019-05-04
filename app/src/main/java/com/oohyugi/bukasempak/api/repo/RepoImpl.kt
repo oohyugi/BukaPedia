@@ -1,9 +1,9 @@
 package com.oohyugi.bukasempak.api.repo
 
+import com.oohyugi.bukasempak.api.base.BaseRepository
 import com.oohyugi.bukasempak.api.base.BaseResult
 import com.oohyugi.bukasempak.api.base.MyResult
 import com.oohyugi.bukasempak.api.base.MyResult.Success
-import com.oohyugi.bukasempak.api.base.safeApiCall
 import com.oohyugi.bukasempak.model.BLHomeMdl
 import com.oohyugi.bukasempak.model.BannerMdl
 import com.oohyugi.bukasempak.model.BaseFlashDealMdl
@@ -17,20 +17,29 @@ import java.lang.Exception
  * Created by oohyugi on 2019-05-01.
  * github: https://github.com/oohyugi
  */
-class RepoImpl : RepoImplBase(), RepoReq {
-    override suspend fun getBanner(): MyResult<List<BannerMdl>> {
-        val response = apiClient.getBannerApi().await()
+class RepoImpl : BaseRepository(), RepoReq {
+    override suspend fun getToken(): MyResult<String> {
         try {
+            val response = apiClient.getToken().await()
             if (response.isSuccessful){
-                return Success<List<BannerMdl>>(response.body()?.data!!)
+
+                return Success<String>(response.body()?.token!!)
             }
-            return MyResult.Error(IOException("Error occurred during fetching home!"))
+            return MyResult.Error(IOException(response.message()))
 
         }catch (e : Exception){
-            return MyResult.Error(IOException("Unable to fetch Home"))
+            return MyResult.Error(e)
         }
 
+
     }
+
+    override suspend fun getBanner() = safeApiCall(
+        { getBanneApi()},
+        errorMessage = "error"
+
+
+        )
 
     override suspend fun getMenu(): MyResult<List<MenuItemMdl>> {
 
@@ -47,18 +56,29 @@ class RepoImpl : RepoImplBase(), RepoReq {
     )
 
 
+    private suspend fun getBanneApi(): MyResult<List<BannerMdl>> {
+        val response = apiClient.getBannerApi().await()
+            if (response.isSuccessful){
+                return Success<List<BannerMdl>>(response.body()?.data!!)
+            }
+            return MyResult.Error(IOException(response.message()))
+
+
+    }
 
 
     private suspend fun getHomeApi(): MyResult<List<BLHomeMdl>> {
-        val response = apiClient.getHomeApi().await()
+
         try {
+            val response = apiClient.getHomeApi().await()
             if (response.isSuccessful){
+
                 return Success<List<BLHomeMdl>>(response.body()?.data!!)
             }
-            return MyResult.Error(IOException("Error occurred during fetching home!"))
+            return MyResult.Error(IOException(response.message()))
 
         }catch (e : Exception){
-            return MyResult.Error(IOException("Unable to fetch Home"))
+            return MyResult.Error(e)
         }
 
 
@@ -66,15 +86,16 @@ class RepoImpl : RepoImplBase(), RepoReq {
 
     }
     private suspend fun getMenuAPi(): MyResult<List<MenuItemMdl>> {
-        val response = apiClient.getMenuApi().await()
+
         try {
+            val response = apiClient.getMenuApi().await()
             if (response.isSuccessful){
                 return Success<List<MenuItemMdl>>(response.body()?.data!!)
             }
-            return MyResult.Error(IOException("Error occurred during fetching home!"))
+            return MyResult.Error(IOException(response.message()))
 
         }catch (e : Exception){
-            return MyResult.Error(IOException("Unable to fetch Home"))
+            return MyResult.Error(e)
         }
 
     }
@@ -82,15 +103,16 @@ class RepoImpl : RepoImplBase(), RepoReq {
 
 
     private suspend fun getFlashDealApi(): MyResult<BaseFlashDealMdl> {
-        val response = apiClient.getFlashDealApi().await()
+
         try {
+            val response = apiClient.getFlashDealApi().await()
             if (response.isSuccessful){
                 return Success<BaseFlashDealMdl>(response.body()!!)
             }
-            return MyResult.Error(IOException("Error occurred during fetching flashdeal!"))
+            return MyResult.Error(IOException(response.message()))
 
         }catch (e : Exception){
-            return MyResult.Error(IOException("Unable to fetch Flashdeal"))
+            return MyResult.Error(e)
 
         }
 

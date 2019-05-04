@@ -19,5 +19,6 @@ interface RepoReq {
     suspend fun getHome():MyResult<List<BLHomeMdl>>
     suspend fun getMenu():MyResult<List<MenuItemMdl>>
     suspend fun getBanner():MyResult<List<BannerMdl>>
+    suspend fun getToken():MyResult<String>
 
 }

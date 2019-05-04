@@ -43,6 +43,7 @@ class ViewHolderProductHorizontal(itemView: View, val context: Context) : Recycl
 
 
     fun setItem(items: BLHomeMdl) {
+        lyHome.visibility = View.VISIBLE
         data = items
         var title: String? = ""
         var subtitleOne: String? = ""
@@ -61,6 +62,7 @@ class ViewHolderProductHorizontal(itemView: View, val context: Context) : Recycl
             }
             imgHome = data?.homePageImgUrl!!
             bgHome = data?.image?.mobileUrl!!
+            mListProducts.clear()
             mListProducts.addAll(data?.products!!)
             productListAdapter.notifyDataSetChanged()
         }

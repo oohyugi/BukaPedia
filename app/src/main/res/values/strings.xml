@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BukaSempak</string>
+    <string name="app_name">BukaPedia</string>
     <string name="action_settings">Settings</string>
     <string name="txt_search_hint">Cari di Bukapedia</string>
 

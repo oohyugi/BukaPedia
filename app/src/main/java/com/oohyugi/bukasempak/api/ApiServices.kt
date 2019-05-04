@@ -17,7 +17,7 @@ interface ApiServices {
     fun getFlashDealApi():Deferred<Response<BaseFlashDealMdl>>
 
 
-    @GET("bl_home.json")
+    @GET("bl_home_new.json")
     fun getHomeApi():Deferred<Response<BaseMdl<List<BLHomeMdl>>>>
 
     @GET("bl_menu.json")
@@ -25,4 +25,7 @@ interface ApiServices {
 
     @GET("bl_banner.json")
     fun getBannerApi():Deferred<Response<BaseMdl<List<BannerMdl>>>>
+
+    @GET("bl_token.php")
+    fun getToken():Deferred<Response<TokenMdl>>
 }

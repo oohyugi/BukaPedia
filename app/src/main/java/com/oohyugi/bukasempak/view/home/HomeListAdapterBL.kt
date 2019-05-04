@@ -111,11 +111,7 @@ class HomeListAdapterBL(private val context: Activity, private val list: List<BL
             vh.setItem(list[position-4])
 
         }
-            TYPE_FLASHDEAL -> {
-                val vh = holder as ViewHolderFlashDeal
-                vh.setItem(mFlashDealMdl)
 
-            }
             TYPE_MENU -> {
                 val vh = holder as ViewHolderMenu
                 vh.setItem(mListMenu)
@@ -206,18 +202,13 @@ class HomeListAdapterBL(private val context: Activity, private val list: List<BL
     fun addItemMenu(list: MutableList<MenuItemMdl>) {
         var i = 0
         var sortedList = list.sortedWith(compareBy { it.ordering })
-        for (item in sortedList) {
-            i++
-            if (i < 9) {
-                mListMenu.add(item)
-
-            }
-        }
+        mListMenu.addAll(sortedList)
 
 
     }
 
     fun addItemBanner(list: MutableList<BannerMdl>) {
+        mListBanner.clear()
         mListBanner.addAll(list)
     }
 

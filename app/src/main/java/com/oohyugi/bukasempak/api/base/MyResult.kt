@@ -6,5 +6,5 @@ package com.oohyugi.bukasempak.api.base
  */
 sealed class MyResult<out T: Any> {
     data class Success<out T : Any>(val data: T) : MyResult<T>()
-    data class Error(val exception: Exception) : MyResult<Nothing>()
+    data class Error(val exception: Throwable, val message: String = exception.localizedMessage):MyResult<Nothing>()
 }

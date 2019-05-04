@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -19,23 +20,38 @@ import com.oohyugi.bukasempak.utils.MarginItemDecoration
 class ViewHolderBanner(itemView: View, context: Context) : RecyclerView.ViewHolder(itemView) {
 
     fun setItem(list: MutableList<BannerMdl>) {
+        mListBanner.clear()
         mListBanner.addAll(list)
+
+        if (mListBanner.isNotEmpty()){
+            lyHome.visibility = View.VISIBLE
+        }
         mBannerAdapter.notifyDataSetChanged()
+        if (mListBanner.size>1){
+            autoScroll(rvBanner, firstItemVisible)
+        }
+
     }
 
     val mListBanner: MutableList<BannerMdl> = mutableListOf()
     var mBannerAdapter: BannerAdapter
     var tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
     var lyContainer: LinearLayout = itemView.findViewById(R.id.ly_container)
+    var lyHome: RelativeLayout = itemView.findViewById(R.id.ly_home)
+    val rvBanner: RecyclerView
+    val indicator: AnyViewIndicator
+    var firstItemVisible = 0
+    var firstCompletelyItemVisible = 0
+    var posAdapter = 0
      init {
 
+         lyHome.visibility = View.GONE
         tvTitle.text = context.getString(R.string.home_title_banner)
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.home_item_banner, null, false)
-
-        val rvBanner: RecyclerView = view.findViewById(R.id.rvBanner)
-        val indicator: AnyViewIndicator = view.findViewById(R.id.anyViewIndicator)
-        mBannerAdapter = BannerAdapter(context, mListBanner)
+         rvBanner = view.findViewById(R.id.rvBanner)
+         indicator = view.findViewById(R.id.anyViewIndicator)
+         mBannerAdapter = BannerAdapter(context, mListBanner)
         val layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.HORIZONTAL,
@@ -50,9 +66,6 @@ class ViewHolderBanner(itemView: View, context: Context) : RecyclerView.ViewHold
 
 
         mBannerAdapter.notifyDataSetChanged()
-        var firstItemVisible = 0
-        var firstCompletelyItemVisible = 0
-        var posAdapter = 0
         indicator.setItemCount(5)
         indicator.setCurrentPosition(1)
 
@@ -97,16 +110,21 @@ class ViewHolderBanner(itemView: View, context: Context) : RecyclerView.ViewHold
 
 //        rvBanner.addItemDecoration(CirclePagerIndicatorDecoration(5))
 
-        autoScroll(rvBanner, firstItemVisible)
+
+
+
+
 
 
         lyContainer.addView(view)
     }
 
+    val handler = Handler()
+    var pos = 1
+    lateinit var runnable: Runnable
     private fun autoScroll(rvBanner: RecyclerView, firstItemVisible: Int) {
-        val handler = Handler()
-        var pos = 1
-        val runnable = object : Runnable {
+
+        runnable = object : Runnable {
             override fun run() {
 
                 var max = firstItemVisible % mListBanner.size

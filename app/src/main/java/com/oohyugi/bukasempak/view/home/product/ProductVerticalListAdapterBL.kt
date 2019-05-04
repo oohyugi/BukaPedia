@@ -1,6 +1,7 @@
 package com.oohyugi.bukasempak.view.home.product
 
 import android.content.Context
+import android.graphics.Typeface
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -64,6 +65,7 @@ class ProductVerticalListAdapterBL(
         }else{
             holder.tvPrice.setTextColor(ContextCompat.getColor(context,R.color.black))
             holder.tvPrice.text = item.price.formatCurrency()
+            holder.tvPrice.typeface = Typeface.DEFAULT_BOLD
             holder.tvDiscountPrice.visibility = View.GONE
             holder.tvDiscountPercent.visibility = View.GONE
 

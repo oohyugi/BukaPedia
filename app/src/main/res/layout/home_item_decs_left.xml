@@ -26,6 +26,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 tools:text="Title"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 />
 
@@ -42,9 +43,8 @@
         <RelativeLayout
                 android:id="@+id/ly_desc_left"
                 android:layout_width="150dp"
-                android:layout_height="320dp"
+                android:layout_height="300dp"
                 android:paddingTop="@dimen/size14dp"
-                android:paddingBottom="@dimen/size14dp"
                 android:orientation="vertical"
                 >
             <TextView
@@ -53,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     tools:text="Title"
+                    android:textStyle="bold"
                     android:lineSpacingExtra="0.1dp"
                     android:textColor="@color/black"
                     />
@@ -64,6 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="SubTitle"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:lineSpacingExtra="0.25dp"
                     android:textColor="@color/black"
@@ -76,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     tools:text="Title"
+                    android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@color/black"
                     />

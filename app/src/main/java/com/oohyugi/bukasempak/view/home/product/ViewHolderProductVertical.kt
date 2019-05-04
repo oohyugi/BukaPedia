@@ -24,10 +24,11 @@ class ViewHolderProductVertical( val context: Context?, itemView: View) : Recycl
     var lyHeader: LinearLayout = itemView.findViewById(R.id.ly_header)
     var lyHome: RelativeLayout = itemView.findViewById(R.id.ly_home)
     fun setItem(item: BLHomeMdl) {
+        lyHome.visibility = View.VISIBLE
         data = item
         tvTitle.text = data?.title
-        initLayoutProducts()
 
+        mListProducts.clear()
         mListProducts.addAll(data?.products!!)
         productListAdapter.notifyDataSetChanged()
 
@@ -50,6 +51,6 @@ class ViewHolderProductVertical( val context: Context?, itemView: View) : Recycl
     }
 
     init {
-
+        initLayoutProducts()
     }
 }

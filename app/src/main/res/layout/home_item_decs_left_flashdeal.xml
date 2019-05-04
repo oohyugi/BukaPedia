@@ -5,48 +5,53 @@
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:id="@+id/ly_home"
-                android:paddingBottom="10dp"
-                android:background="@color/colorAccent"
         >
 
-    <LinearLayout
-            android:visibility="visible"
-            android:id="@+id/ly_header"
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/size14dp"
-
+            android:id="@+id/ly_home"
+            android:visibility="gone"
+            android:paddingBottom="10dp"
+            android:background="@color/colorAccent"
             >
-
-        <TextView
-                android:visibility="invisible"
-                android:id="@+id/tvTitle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+        <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/ly_header"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                />
+                android:orientation="horizontal"
+                android:padding="@dimen/size14dp"
 
-        <TextView
-                android:id="@+id/tvMore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/size14dp"
-                android:text="Lihat Semua"
-                android:textSize="12sp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingLeft="@dimen/size8dp"
-                android:paddingRight="@dimen/size8dp"
-                android:visibility="invisible"
-                android:background="@drawable/shape_stroke_see_all"
-                android:textColor="@color/white"
-                />
-    </LinearLayout>
+                >
+
+            <TextView
+                    android:visibility="invisible"
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+
+            <TextView
+                    android:id="@+id/tvMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size14dp"
+                    android:text="Lihat Semua"
+                    android:textSize="12sp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="@dimen/size8dp"
+                    android:paddingRight="@dimen/size8dp"
+                    android:visibility="invisible"
+                    android:background="@drawable/shape_stroke_see_all"
+                    android:textColor="@color/white"
+                    />
+        </LinearLayout>
 
         <RelativeLayout
                 android:layout_below="@+id/ly_header"
@@ -68,7 +73,7 @@
                     android:text="FLASH DEAL"
                     android:lineSpacingExtra="0.1dp"
                     android:textStyle="bold"
-                   android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@color/white"
                     />
 
@@ -93,14 +98,14 @@
                     tools:text="Title"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                     android:textColor="@color/white"
+                    android:textColor="@color/white"
                     />
 
             <ImageView
                     android:id="@+id/ivHomeLeft"
                     android:layout_width="46dp"
                     android:layout_height="46dp"
-                   android:src="@drawable/product_sample"
+                    android:src="@drawable/product_sample"
                     />
 
 
@@ -120,14 +125,23 @@
         </RelativeLayout>
 
 
-            <LinearLayout
-                    android:layout_below="@+id/ly_header"
-                    android:id="@+id/ly_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    />
+        <LinearLayout
+                android:layout_below="@+id/ly_header"
+                android:id="@+id/ly_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                />
 
 
 
+    </RelativeLayout>
+
+
+    <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size14dp"
+            android:layout_centerInParent="true"/>
 </RelativeLayout>

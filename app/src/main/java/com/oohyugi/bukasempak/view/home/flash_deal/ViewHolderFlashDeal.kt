@@ -2,34 +2,37 @@ package com.oohyugi.bukasempak.view.home.flash_deal
 
 import android.content.Context
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
+import androidx.fragment.app.FragmentActivity
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.oohyugi.bukasempak.R
 import com.oohyugi.bukasempak.model.BaseFlashDealMdl
 import com.oohyugi.bukasempak.model.ItemsFlashDealMdl
 import com.oohyugi.bukasempak.utils.MarginItemDecoration
-import com.oohyugi.bukasempak.view.home.product.FlashDealListAdapterBL
+import com.oohyugi.bukasempak.view.home.HomeViewModel
 import kotlin.math.abs
+
+
+
 
 class ViewHolderFlashDeal(itemView: View,val context: Context) : RecyclerView.ViewHolder(itemView) {
 
         var mListProducts: MutableList<ItemsFlashDealMdl> = mutableListOf()
+        lateinit var viewModel:HomeViewModel
          var mFlashDealMdl:BaseFlashDealMdl? =null
-        fun setItem(item: BaseFlashDealMdl?) {
-                mFlashDealMdl = item
-                if (mFlashDealMdl != null) {
-                        mListProducts.addAll(mFlashDealMdl!!.flashDeal.items!!)
-
-                }
-                flashListAdapter.notifyDataSetChanged()
-        }
+//        fun setItem(item: BaseFlashDealMdl?) {
+//                mFlashDealMdl = item
+//
+//
+//        }
         lateinit var flashListAdapter: FlashDealListAdapterBL
         var offset: Float = 0f
         var offsetPlus: Float = 0f
@@ -45,10 +48,33 @@ class ViewHolderFlashDeal(itemView: View,val context: Context) : RecyclerView.Vi
         var lyContainer: LinearLayout = itemView.findViewById(R.id.ly_container)
         var lyHeader: LinearLayout = itemView.findViewById(R.id.ly_header)
         var lyHome: RelativeLayout = itemView.findViewById(R.id.ly_home)
+        var progress: ProgressBar = itemView.findViewById(R.id.progress)
 
         init {
 
                 var subTitleTwo: String
+                lyHome.visibility = View.GONE
+                viewModel = ViewModelProviders.of(context as FragmentActivity).get(HomeViewModel::class.java)
+                progress.visibility = View.VISIBLE
+                viewModel.flashDealMdl
+                        .observe(context,
+                                Observer<BaseFlashDealMdl> {
+                                        mFlashDealMdl = it
+                                        if (mFlashDealMdl != null) {
+                                                progress.visibility = View.GONE
+                                                lyHome.visibility = View.VISIBLE
+                                                mListProducts.clear()
+                                                mListProducts.addAll(mFlashDealMdl!!.flashDeal.items!!)
+
+                                        }
+
+                                        flashListAdapter.notifyDataSetChanged()
+                                        Log.e("callViewModelFlash",Gson().toJson(it))
+
+                                })
+
+
+
 
 
 
@@ -91,7 +117,8 @@ class ViewHolderFlashDeal(itemView: View,val context: Context) : RecyclerView.Vi
                         LinearLayoutManager.HORIZONTAL,
                         false
                 )
-                flashListAdapter = FlashDealListAdapterBL(context, mListProducts)
+                flashListAdapter =
+                        FlashDealListAdapterBL(context, mListProducts)
                 rvFlashdeal?.layoutManager = mLayoutManager
                 rvFlashdeal?.adapter = flashListAdapter
                 rvFlashdeal?.addItemDecoration(MarginItemDecoration(14, MarginItemDecoration.TYPE_HORIZONTAL))

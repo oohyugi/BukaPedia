@@ -39,62 +39,37 @@ class MainActivity : AppCompatActivity() {
 
         this.replaceFragment(HomeFragment.newInstance(),R.id.main_container,"home")
 
-        appBarLayout?.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener{
-            @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-            override fun onOffsetChanged(appBar: AppBarLayout?, verticalOffset: Int) {
-                if (Math.abs(verticalOffset)-appBarLayout!!.totalScrollRange == 0)
-                {
-                    //  Collapsed
-//
-                    if(ly_dana.visibility == View.VISIBLE){
-                        etSearchBar.visibility = View.VISIBLE
-                        ly_dana.visibility = View.GONE
-                        val slideAnimation = loadAnimation(this@MainActivity, R.anim.slide_in)
+        appBarLayout?.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBar, verticalOffset ->
+            if (Math.abs(verticalOffset)-appBarLayout!!.totalScrollRange == 0) {
+                //  Collapsed
+                //
+                if(ly_dana.visibility == View.VISIBLE){
+                    etSearchBar.visibility = View.VISIBLE
+                    ly_dana.visibility = View.GONE
+                    val slideAnimation = loadAnimation(this@MainActivity, R.anim.slide_in)
                     etSearchBar.startAnimation(slideAnimation)
 
-                    }
-
-
-                    val elev = 4
-                    ViewCompat.setElevation(appBarLayout!!,elev.toFloat())
-
-
                 }
-                else
-                {
-                    //Expanded
-                    if (etSearchBar.visibility == View.VISIBLE){
-                        etSearchBar.visibility = View.GONE
-                        ly_dana.visibility = View.VISIBLE
-                    }
 
 
-                    val elev = 0
-                    ViewCompat.setElevation(appBarLayout!!,elev.toFloat())
+                val elev = 4
+                ViewCompat.setElevation(appBarLayout!!,elev.toFloat())
 
+
+            } else {
+                //Expanded
+                if (etSearchBar.visibility == View.VISIBLE){
+                    etSearchBar.visibility = View.GONE
+                    ly_dana.visibility = View.VISIBLE
                 }
+
+
+                val elev = 0
+                ViewCompat.setElevation(appBarLayout!!,elev.toFloat())
+
             }
-
         })
 
-//        initViewModel()
-    }
-
-    private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.flashDeal
-            .observe(this,
-            Observer<BaseFlashDealMdl> {
-                mBaseFlashDealMdl = it
-
-            })
-
-        viewModel.homeMdl
-            .observe(this,
-                Observer<List<BLHomeMdl>> {
-                    mListHome.addAll(it!!)
-
-                })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
