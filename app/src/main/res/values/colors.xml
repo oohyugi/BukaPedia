@@ -13,4 +13,6 @@
     <color name="silver">#C0C0C0</color>
     <color name="transparantwhite">#33FFFFFF</color>
     <color name="transparantBlack">#1A000000</color>
+    <color name="transparantBlack30percent">#4D000000</color>
+    <color name="yellow600">#fdd835</color>
 </resources>

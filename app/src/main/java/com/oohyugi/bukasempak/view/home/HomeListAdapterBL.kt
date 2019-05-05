@@ -9,11 +9,11 @@ import com.oohyugi.bukasempak.utils.MarginItemDecoration
 import android.widget.*
 import androidx.recyclerview.widget.*
 import com.oohyugi.bukasempak.model.*
-import com.oohyugi.bukasempak.view.home.product.ProductListAdapterBL
+import com.oohyugi.bukasempak.view.home.product.ProductListHomeAdapterBL
 import com.oohyugi.bukasempak.view.home.banner.ViewHolderBanner
 import com.oohyugi.bukasempak.view.home.flash_deal.ViewHolderFlashDeal
 import com.oohyugi.bukasempak.view.home.menu.ViewHolderMenu
-import com.oohyugi.bukasempak.view.home.product.ViewHolderProductHorizontal
+import com.oohyugi.bukasempak.view.home.product.ViewHolderProductHome
 import com.oohyugi.bukasempak.view.home.product.ViewHolderProductVertical
 import com.oohyugi.bukasempak.view.home.single_menu.ViewHolderSingleMenu
 
@@ -60,7 +60,7 @@ class HomeListAdapterBL(private val context: Activity, private val list: List<BL
             }
             TYPE_PRODUCT_HORIZONTAL -> {
                 view = inflater.inflate(R.layout.home_item_decs_left, parent, false)
-                viewHolder = ViewHolderProductHorizontal(view,context)
+                viewHolder = ViewHolderProductHome(view,context)
             }
             TYPE_PRODUCT_VERTICAL -> {
                 view = inflater.inflate(R.layout.home_item, parent, false)
@@ -102,7 +102,7 @@ class HomeListAdapterBL(private val context: Activity, private val list: List<BL
                 configureViewHolder(vh, position)
             }
             TYPE_PRODUCT_HORIZONTAL -> {
-                val vh = holder as ViewHolderProductHorizontal
+                val vh = holder as ViewHolderProductHome
                 vh.setItem(list[position-4])
 
             }
@@ -141,7 +141,7 @@ class HomeListAdapterBL(private val context: Activity, private val list: List<BL
 
     }
 
-    lateinit var productListAdapter: ProductListAdapterBL
+    lateinit var productListHomeAdapter: ProductListHomeAdapterBL
 
     private fun initLayoutProduct(holder: ViewHolder, item: BLHomeMdl) {
         val view = LayoutInflater.from(context).inflate(R.layout.home_item_product_horizontal, null, false)
@@ -152,11 +152,11 @@ class HomeListAdapterBL(private val context: Activity, private val list: List<BL
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        productListAdapter = ProductListAdapterBL(context, item.products!!, "default")
+        productListHomeAdapter = ProductListHomeAdapterBL(context, item.products!!, "default")
         rvProduct.layoutManager = layoutManager
-        rvProduct.adapter = productListAdapter
+        rvProduct.adapter = productListHomeAdapter
         rvProduct.addItemDecoration(MarginItemDecoration(14, MarginItemDecoration.TYPE_HORIZONTAL))
-        productListAdapter.notifyDataSetChanged()
+        productListHomeAdapter.notifyDataSetChanged()
 
         holder.lyContainer.addView(view)
     }

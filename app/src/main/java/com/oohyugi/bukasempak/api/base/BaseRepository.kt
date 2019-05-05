@@ -11,6 +11,7 @@ import java.io.IOException
  */
 open class BaseRepository {
     var apiClient = ApiClient.makeService("http://yogiputra.com/bl_api/")
+    var apiClientBl = ApiClient.makeService("https://api.bukalapak.com/")
 //    suspend fun <T: Any> safeApiCall(call: suspend ()-> Response<T>, errorMessage:String):T?{
 //        val result: MyResult<T> = safeApiResult(call,errorMessage)
 //        var data: T? = null

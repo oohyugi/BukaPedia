@@ -13,11 +13,9 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.oohyugi.bukasempak.R
-import com.oohyugi.bukasempak.model.ItemsMdl
 import com.oohyugi.bukasempak.model.ProductMdl
 import com.oohyugi.bukasempak.model.ProductsItemMdl
 import com.oohyugi.bukasempak.utils.formatCurrency
-import com.oohyugi.bukasempak.utils.indonesiaFormat
 import com.oohyugi.bukasempak.utils.setStrikeStrought
 import com.oohyugi.bukasempak.view.detail.ProductDetailActivity
 
@@ -25,12 +23,11 @@ import com.oohyugi.bukasempak.view.detail.ProductDetailActivity
  * Created by oohyugi on 2019-04-25.
  * github: https://github.com/oohyugi
  */
-class ProductListAdapterBL(
+class ProductSimilarListAdapterBL(
     private val context: Context,
-    private val list: List<ProductsItemMdl>,
-    val typeItems: String
+    private val list: List<ProductMdl>
 ) :
-    RecyclerView.Adapter<ProductListAdapterBL.ViewHolder>() {
+    RecyclerView.Adapter<ProductSimilarListAdapterBL.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -48,7 +45,7 @@ class ProductListAdapterBL(
         val context = parent.context
         val inflater = LayoutInflater.from(context)
 
-        val view = inflater.inflate(R.layout.product_item, parent, false)
+        val view = inflater.inflate(R.layout.product_horizontal_item, parent, false)
 
 
         return ViewHolder(view)
@@ -56,31 +53,26 @@ class ProductListAdapterBL(
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = list[position].product
+        val item = list[position]
 
         holder.tvTitle.text = item.name
-        if (item.deal!=null){
-            holder.tvPrice.text = item.deal.originalPrice.formatCurrency()
-            holder.tvDiscountPrice.text= item.deal.discountPrice.formatCurrency()
-            holder.tvPrice.setStrikeStrought()
-            holder.tvDiscountPercent.text  = "${item.deal.percentage}%"
-        }else{
+//        if (item.deal!=null){
+//            holder.tvPrice.text = item.deal.originalPrice.formatCurrency()
+//            holder.tvDiscountPrice.text= item.deal.discountPrice.formatCurrency()
+//            holder.tvPrice.setStrikeStrought()
+//            holder.tvDiscountPercent.text  = "${item.deal.percentage}%"
+//        }else{
             holder.tvPrice.setTextColor(ContextCompat.getColor(context,R.color.black))
-            holder.tvPrice.typeface = Typeface.DEFAULT_BOLD
             holder.tvPrice.text = item.price.formatCurrency()
+            holder.tvPrice.typeface = Typeface.DEFAULT_BOLD
             holder.tvDiscountPrice.visibility = View.GONE
             holder.tvDiscountPercent.visibility = View.GONE
 
-        }
+//        }
         Glide.with(context).load(item.images.largeUrls?.get(0)).into(holder.ivProduct)
-        if (typeItems == "flash_deal"){
-            holder.lyStock.visibility = View.VISIBLE
-        }else holder.lyStock.visibility = View.GONE
-
         holder.itemView.setOnClickListener {
-            ProductDetailActivity.startThisActivity(context,Gson().toJson(item))
+            ProductDetailActivity.startThisActivity(context, Gson().toJson(item))
         }
-
     }
 
 
@@ -90,7 +82,7 @@ class ProductListAdapterBL(
 
     companion object {
 
-        private val TAG = ProductListAdapterBL::class.java.simpleName
+        private val TAG = ProductSimilarListAdapterBL::class.java.simpleName
     }
 
 

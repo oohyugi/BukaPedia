@@ -4,10 +4,7 @@ import com.oohyugi.bukasempak.api.base.BaseRepository
 import com.oohyugi.bukasempak.api.base.BaseResult
 import com.oohyugi.bukasempak.api.base.MyResult
 import com.oohyugi.bukasempak.api.base.MyResult.Success
-import com.oohyugi.bukasempak.model.BLHomeMdl
-import com.oohyugi.bukasempak.model.BannerMdl
-import com.oohyugi.bukasempak.model.BaseFlashDealMdl
-import com.oohyugi.bukasempak.model.MenuItemMdl
+import com.oohyugi.bukasempak.model.*
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import java.io.IOException
@@ -18,6 +15,35 @@ import java.lang.Exception
  * github: https://github.com/oohyugi
  */
 class RepoImpl : BaseRepository(), RepoReq {
+    override suspend fun getSimilarProduct(token: String, productId: String): MyResult<BaseMdl<List<ProductMdl>>>? {
+        try {
+            val response = apiClientBl.getSimilarProduct(productId,token).await()
+            if (response.isSuccessful){
+
+                return Success<BaseMdl<List<ProductMdl>>>(response.body()!!)
+            }
+            return MyResult.Error(IOException(response.message()))
+
+        }catch (e : Exception){
+            return MyResult.Error(e)
+        }
+    }
+
+    override suspend fun getReviewProduct(token: String, productId: String, limit: Int): MyResult<BaseMdl<List<ReviewProductMdl>>>? {
+
+        try {
+            val response = apiClientBl.getReviewProduct(token,productId,limit).await()
+            if (response.isSuccessful){
+
+                return Success<BaseMdl<List<ReviewProductMdl>>>(response.body()!!)
+            }
+            return MyResult.Error(IOException(response.message()))
+
+        }catch (e : Exception){
+            return MyResult.Error(e)
+        }
+    }
+
     override suspend fun getToken(): MyResult<String> {
         try {
             val response = apiClient.getToken().await()

@@ -4,6 +4,8 @@ import com.oohyugi.bukasempak.model.*
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 import java.util.*
 
 /**
@@ -28,4 +30,11 @@ interface ApiServices {
 
     @GET("bl_token.php")
     fun getToken():Deferred<Response<TokenMdl>>
+
+    @GET("product-reviews")
+    fun getReviewProduct(@Query("access_token")token:String, @Query("product_id")productId:String, @Query("limit")limit:Int):Deferred<Response<BaseMdl<List<ReviewProductMdl>>>>
+
+    @GET("products/{id}/similar?")
+    fun getSimilarProduct(@Path("id")productId:String,@Query("access_token")token:String ):Deferred<Response<BaseMdl<List<ProductMdl>>>>
+
 }

@@ -56,5 +56,7 @@ data class ProductMdl(@SerializedName("max_quantity")
                       @SerializedName("category")
                       val category: CategoryMdl,
                       @SerializedName("deal")
-                      val deal: DealMdl? = null
+                      val deal: DealMdl? = DealMdl(),
+                      @SerializedName("specs")
+                      val specs: Map<String,Any>? = mapOf()
                       ) : Serializable

@@ -10,11 +10,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
 import com.google.android.material.appbar.AppBarLayout
 import com.google.gson.Gson
 import com.oohyugi.bukasempak.R
-import com.oohyugi.bukasempak.base.BaseActivity
 import com.oohyugi.bukasempak.model.ProductMdl
 import com.oohyugi.bukasempak.utils.indonesiaFormat
 import com.oohyugi.bukasempak.utils.setStrikeStrought
@@ -22,7 +20,24 @@ import kotlinx.android.synthetic.main.activity_product_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
 import android.graphics.PorterDuff
 import android.os.Build
+import android.util.Log
+import android.view.LayoutInflater
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.oohyugi.bukasempak.model.BaseMdl
+import com.oohyugi.bukasempak.model.ReviewProductMdl
+import com.oohyugi.bukasempak.utils.MarginItemDecoration
+import com.oohyugi.bukasempak.utils.PrefHelper
+import com.oohyugi.bukasempak.view.home.product.ProductSimilarListAdapterBL
+import kotlinx.android.synthetic.main.detail_product_bottomsheet.*
+import kotlinx.android.synthetic.main.detail_product_content.*
 
 
 class ProductDetailActivity : AppCompatActivity() {
@@ -37,9 +52,16 @@ class ProductDetailActivity : AppCompatActivity() {
         }
     }
 
+    private lateinit var viewModel: DetailViewModel
     private lateinit var mData:ProductMdl
     lateinit var imgProductPagerAdapter: ImgProductPagerAdapter
     var mItem: Menu? = null
+    private var mBottomSheetBehavior: BottomSheetBehavior<RelativeLayout>? = null
+    private var hasmapSpecs: MutableMap<String, Any> = mutableMapOf()
+    private var mListReviewProductMdl:MutableList<ReviewProductMdl> = mutableListOf()
+    private var mListSimilarProductMdl:MutableList<ProductMdl> = mutableListOf()
+    lateinit var reviewAdapter: ProductReviewAdapter
+    lateinit var similarAdapter: ProductSimilarListAdapterBL
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +69,7 @@ class ProductDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_detail)
         val json  = intent.getStringExtra(EXTRA_DATA)
 
+        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
         mData = Gson().fromJson(json,ProductMdl::class.java)
 
         setSupportActionBar(toolbar)
@@ -59,8 +82,8 @@ class ProductDetailActivity : AppCompatActivity() {
                 //  Collapsed
                toolbar?.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
 
-                val elev = 4
-                ViewCompat.setElevation(appBarLayout,elev.toFloat())
+//                val elev = 4
+//                ViewCompat.setElevation(appBarLayout,elev.toFloat())
                 mItem?.findItem(R.id.action_love)?.setIcon(R.drawable.ic_favorite_black_24dp)
                 mItem?.findItem(R.id.action_cart)?.setIcon(R.drawable.ic_shopping_cart_black_24dp)
 //                mItem?.findItem(android.R.id.home)?.setIcon(R.drawable.ic_arrow_back_black_24dp)
@@ -74,8 +97,8 @@ class ProductDetailActivity : AppCompatActivity() {
                 toolbar?.setBackgroundColor(ContextCompat.getColor(this,R.color.transparantBlack))
 
 
-                val elev = 0
-                ViewCompat.setElevation(appBarLayout,elev.toFloat())
+//                val elev = 0
+//                ViewCompat.setElevation(appBarLayout,elev.toFloat())
                 mItem?.findItem(R.id.action_love)?.setIcon(R.drawable.ic_favorite_white_24dp)
                 mItem?.findItem(R.id.action_cart)?.setIcon(R.drawable.ic_shopping_cart_white_24dp)
                 toolbar.overflowIcon =resources.getDrawable( R.drawable.ic_more_vert_white_24dp)
@@ -116,11 +139,174 @@ class ProductDetailActivity : AppCompatActivity() {
         tv_stock.text = "${mData.stock}"
         tv_terjual.text = "${mData.stats.soldCount}"
         tv_desc.text = Html.fromHtml(mData.description)
+        Glide.with(this).load(mData.store.avatarUrl).into(iv_user)
+        tv_user.text = mData.store.name
+        tv_loc.text = mData.store.address.city
+        Glide.with(this).load(mData.store.level.imageUrl).into(iv_level)
+        tv_level.text =mData.store.level.name
+        tv_total_feedback.text = "100% (${mData.store.reviews.positive} feedback)"
+        tv_waktu_kirim.text = "Waktu kirim pesanan ± ${mData.store.deliveryTime}"
+        tv_rating.text = mData.rating.averageRate.toString()
+
+        initReview()
+        initSimilar()
+
+        mBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
+
+        view_touch.setOnClickListener {
+            showCloseBottomSheet()
+        }
+        setupBottomSheetData()
+        mBottomSheetBehavior!!.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> finish()
+                    BottomSheetBehavior.STATE_COLLAPSED -> {
+                        view_touch.visibility = View.GONE
+                    }
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+
+
+                Log.e("slodeOffset",slideOffset.toString())
+                view_touch.visibility = View.VISIBLE
+                view_touch.alpha = slideOffset
+
+            }
+        })
         btnMoreDesc.setOnClickListener {
-            val bottomsheet = BottomSheetAllDescription.newInstance(Gson().toJson(mData))
-            bottomsheet.show(supportFragmentManager,"all_desc")
+//            val bottomsheet = BottomSheetAllDescription.newInstance(Gson().toJson(mData))
+//            bottomsheet.show(supportFragmentManager,"all_desc")
+           showCloseBottomSheet()
         }
 
+    }
+
+    private fun initSimilar() {
+        similarAdapter = ProductSimilarListAdapterBL(this,mListSimilarProductMdl)
+        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        rvSimilar.addItemDecoration(MarginItemDecoration(14,MarginItemDecoration.TYPE_HORIZONTAL))
+        rvSimilar.layoutManager = layoutManager
+        rvSimilar.adapter = similarAdapter
+        viewModel.similarProductCall(PrefHelper.getToken(this)!!,mData.id)
+        viewModel.mListProductMdl.observe(this,
+            Observer<BaseMdl<List<ProductMdl>>> {
+                Log.e("reviewProduct",Gson().toJson(it))
+                mListSimilarProductMdl.addAll(it.data)
+                similarAdapter.notifyDataSetChanged()
+            })
+
+    }
+
+    private fun initReview() {
+
+        progress_review.visibility = View.VISIBLE
+        reviewAdapter = ProductReviewAdapter(this,mListReviewProductMdl)
+        val layoutManager = LinearLayoutManager(this)
+        rvReview.layoutManager = layoutManager
+        rvReview.adapter = reviewAdapter
+
+//        val dividerItemDecoration =  DividerItemDecoration(this,
+//        layoutManager.orientation)
+//        rvReview.addItemDecoration(dividerItemDecoration)
+        viewModel.reviewProductCall(PrefHelper.getToken(this)!!,mData.id,3)
+        viewModel.mListReviewMdl.observe(this,
+            Observer<BaseMdl<List<ReviewProductMdl>>> {
+                Log.e("reviewProduct",Gson().toJson(it))
+                mListReviewProductMdl.addAll(it.data)
+                btn_see_all_review.text = "Lihat Semua Ulasan (${it.meta!!.total})"
+                reviewAdapter.notifyDataSetChanged()
+                progress_review.visibility = View.GONE
+                content_review.visibility = View.VISIBLE
+            })
+
+
+    }
+
+    private fun setupBottomSheetData() {
+
+        tv_stock_sheet.text = "${mData.stock}"
+        tv_terjual_sheet.text = "${mData.stats.soldCount}"
+
+        tv_desc_sheet.text = Html.fromHtml(mData.description)
+
+        btnClose.setOnClickListener {
+            showCloseBottomSheet()
+        }
+        val containerSpec = findViewById<LinearLayout>(R.id.container_spec)
+
+//
+
+        try {
+
+            hasmapSpecs["Kategori"] = mData.category.name
+            hasmapSpecs["Kondisi"] = mData.condition
+            hasmapSpecs.putAll(mData.specs!!)
+            Log.e("specs", hasmapSpecs.toString())
+            var valueArray: MutableList<Any> = mutableListOf()
+            var valueShow = ""
+            var valueString = ""
+            var keyShow = ""
+            var i = 0
+
+            hasmapSpecs
+            if (hasmapSpecs.isNotEmpty()) {
+                ly_specdesc.visibility = View.VISIBLE
+                for (itemSpecs in hasmapSpecs) {
+
+                    i++
+
+                    valueString = itemSpecs.value.toString().replace("[", "").replace("]", "")
+
+                    valueShow = if (valueString.isNotEmpty()) valueString
+                    else "-"
+
+                    keyShow = itemSpecs.key
+
+                    val viewSpec =
+                        LayoutInflater.from(this).inflate(R.layout.detail_product_item_spesifikasi, null, false)
+
+                    val tvName = viewSpec.findViewById<TextView>(R.id.tv_name)
+                    val tvValue = viewSpec.findViewById<TextView>(R.id.tv_value)
+                    val lySpec = viewSpec.findViewById<LinearLayout>(R.id.ly_spec)
+
+                    tvName.text = keyShow.replace("_", " ").replace("-", " ").capitalize()
+                    if (keyShow.equals("Kondisi",true)){
+                        tvValue.background =resources.getDrawable(R.drawable.shape_rounded_accent_10dp)
+                        tvValue.setTextColor(ContextCompat.getColor(this,R.color.white))
+                        tvValue.setPadding(8,3,8,3)
+                    }
+                    tvValue.text = valueShow.capitalize()
+                    if (i % 2 == 0) {
+                        lySpec.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+                    } else {
+                        lySpec.setBackgroundColor(ContextCompat.getColor(this, R.color.whiteSmoke))
+                    }
+
+                    Log.e("specs", itemSpecs.toString())
+                    containerSpec.addView(viewSpec)
+                }
+
+
+            } else {
+                ly_specdesc.visibility = View.GONE
+            }
+
+        } catch (e: Exception) {
+
+        }
+
+    }
+
+    private fun showCloseBottomSheet() {
+        if((mBottomSheetBehavior)!!.state != BottomSheetBehavior.STATE_EXPANDED) {
+            (mBottomSheetBehavior)!!.setState(BottomSheetBehavior.STATE_EXPANDED)
+        }
+        else {
+            (mBottomSheetBehavior)!!.setState(BottomSheetBehavior.STATE_COLLAPSED)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

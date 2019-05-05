@@ -8,5 +8,7 @@ import com.google.gson.annotations.SerializedName
  */
 data class BaseMdl<T> (
     @SerializedName("data")
-    val data :T
+    val data :T,
+    @SerializedName("meta")
+    val meta :MetaMdl? = null
 )

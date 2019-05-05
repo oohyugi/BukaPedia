@@ -45,7 +45,7 @@ class ViewHolderProductVertical( val context: Context?, itemView: View) : Recycl
         productListAdapter = ProductVerticalListAdapterBL(context!!, mListProducts, "default")
         rvProduct.layoutManager = layoutManager
         rvProduct.adapter = productListAdapter
-//        rvProduct.addItemDecoration(MarginItemDecoration(14, MarginItemDecoration.TYPE_GRID_VERTICAL))
+        rvProduct.addItemDecoration(MarginItemDecoration(14, MarginItemDecoration.TYPE_GRID_HORIZONTAL))
         productListAdapter.notifyDataSetChanged()
         lyContainer.addView(view)
     }

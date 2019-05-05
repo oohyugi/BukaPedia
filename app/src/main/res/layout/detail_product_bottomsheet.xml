@@ -4,23 +4,34 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
-        app:behavior_peekHeight="300dp"
+        app:behavior_peekHeight="0dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:background="@color/whiteSmoke"
+        android:id="@+id/bottom_sheet"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:minHeight="200dp"
+
+        android:layout_height="wrap_content">
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="?attr/actionBarSize"
+        >
     <LinearLayout
             android:id="@+id/lyBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical">
         <View
-               android:layout_marginTop="@dimen/size8dp"
+                android:layout_marginTop="@dimen/size8dp"
                 android:layout_gravity="center"
                 android:layout_width="36dp"
                 android:layout_height="10dp"
                 android:background="@drawable/shape_nego"/>
 
         <LinearLayout
-                android:layout_marginTop="@dimen/size14dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -48,18 +59,16 @@
                 android:background="@color/gainsboro"/>
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
+            android:visibility="visible"
             android:layout_below="@+id/lyBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
         <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-  >
+                >
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -75,8 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_below="@+id/tv1"
-                        android:layout_marginTop="24dp">
+                        android:layout_below="@+id/tv1">
                     <ImageView
                             android:id="@+id/iv_stock"
                             android:layout_width="24dp"
@@ -93,7 +101,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tv_stock"
+                            android:id="@+id/tv_stock_sheet"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/size14dp"/>
 
@@ -121,13 +129,14 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tv_terjual"
+                            android:id="@+id/tv_terjual_sheet"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/size14dp"/>
 
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                    android:id="@+id/ly_specdesc"
                     android:padding="@dimen/size14dp"
                     android:layout_marginTop="@dimen/size14dp"
                     android:layout_width="match_parent"
@@ -155,6 +164,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="@dimen/size14dp"
+                    android:background="@color/white"
                     android:layout_marginTop="@dimen/size14dp">
                 <TextView
                         android:layout_width="wrap_content"
@@ -167,13 +177,54 @@
                         android:layout_below="@+id/dividerInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_desc"
+                        android:id="@+id/tv_desc_sheet"
                         android:lineSpacingExtra="1.5dp"
                         tools:text="desc"
                         android:textColor="@color/black"/>
             </LinearLayout>
 
         </LinearLayout>
+
+
     </androidx.core.widget.NestedScrollView>
+
+
+    <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ly_act"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/size14dp"
+            android:paddingRight="@dimen/size14dp"
+            android:orientation="horizontal">
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_message_black_24dp"
+                android:padding="@dimen/size8dp"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_nego"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_shopping_cart_black_24dp"
+                android:padding="@dimen/size8dp"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_nego"
+                android:layout_marginLeft="@dimen/size8dp"/>
+        <com.google.android.material.button.MaterialButton
+                android:layout_marginLeft="@dimen/size8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="Beli Sekarang"
+                android:textAllCaps="false"
+                android:layout_gravity="center"/>
+    </LinearLayout>
+</RelativeLayout>
 
 </RelativeLayout>

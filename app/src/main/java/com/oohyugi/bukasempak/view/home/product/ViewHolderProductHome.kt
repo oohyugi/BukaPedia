@@ -23,8 +23,8 @@ import com.oohyugi.bukasempak.model.ProductsItemMdl
 import com.oohyugi.bukasempak.utils.MarginItemDecoration
 import kotlin.math.abs
 
-class ViewHolderProductHorizontal(itemView: View, val context: Context) : RecyclerView.ViewHolder(itemView) {
-    lateinit var productListAdapter: ProductListAdapterBL
+class ViewHolderProductHome(itemView: View, val context: Context) : RecyclerView.ViewHolder(itemView) {
+    lateinit var productListHomeAdapter: ProductListHomeAdapterBL
     var mListProducts: MutableList<ProductsItemMdl> = mutableListOf()
     var data: BLHomeMdl? = null
     var offset: Float = 0f
@@ -64,7 +64,7 @@ class ViewHolderProductHorizontal(itemView: View, val context: Context) : Recycl
             bgHome = data?.image?.mobileUrl!!
             mListProducts.clear()
             mListProducts.addAll(data?.products!!)
-            productListAdapter.notifyDataSetChanged()
+            productListHomeAdapter.notifyDataSetChanged()
         }
 
 
@@ -107,11 +107,11 @@ class ViewHolderProductHorizontal(itemView: View, val context: Context) : Recycl
             false
         )
 //        layoutManager.reverseLayout = true
-        productListAdapter = ProductListAdapterBL(context, mListProducts, "default")
+        productListHomeAdapter = ProductListHomeAdapterBL(context, mListProducts, "default")
         rvProduct.layoutManager = layoutManager
-        rvProduct.adapter = productListAdapter
+        rvProduct.adapter = productListHomeAdapter
         rvProduct.addItemDecoration(MarginItemDecoration(14, MarginItemDecoration.TYPE_HORIZONTAL))
-        productListAdapter.notifyDataSetChanged()
+        productListHomeAdapter.notifyDataSetChanged()
         rvProduct.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
