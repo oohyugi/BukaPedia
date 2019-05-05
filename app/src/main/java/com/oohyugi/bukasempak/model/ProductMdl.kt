@@ -1,6 +1,7 @@
 package com.oohyugi.bukasempak.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ProductMdl(@SerializedName("max_quantity")
                       val maxQuantity: Int = 0,
@@ -56,4 +57,4 @@ data class ProductMdl(@SerializedName("max_quantity")
                       val category: CategoryMdl,
                       @SerializedName("deal")
                       val deal: DealMdl? = null
-                      )
+                      ) : Serializable

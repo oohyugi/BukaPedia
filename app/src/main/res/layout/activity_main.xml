@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                     xmlns:tools="http://schemas.android.com/tools"
-                                                     android:layout_width="match_parent"
-                                                     android:layout_height="match_parent"
-                                                     android:fitsSystemWindows="true"
-                                                     android:background="@color/whiteSmoke"
-                                                     tools:context=".view.main.MainActivity"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/whiteSmoke"
+        tools:context=".view.main.MainActivity"
         >
 
 
@@ -62,5 +63,6 @@
             app:itemTextColor="@color/nav_bottom"
             app:labelVisibilityMode="labeled"
             app:itemTextAppearanceActive="@color/colorAccent"
-            app:menu="@menu/bottom_navigation_main" />
+            app:menu="@menu/bottom_navigation_main"
+            />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

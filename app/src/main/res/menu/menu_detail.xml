@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.oohyugi.bukasempak.view.main.MainActivity">
+
+    <item
+            android:id="@+id/action_cart"
+            android:orderInCategory="100"
+            android:icon="@drawable/ic_shopping_cart_white_24dp"
+            android:iconTint="@color/white"
+            android:title="cart"
+            app:showAsAction="always" />
+    <item
+            android:id="@+id/action_love"
+            android:orderInCategory="100"
+            android:icon="@drawable/ic_favorite_white_24dp"
+            android:iconTint="@color/white"
+            android:title="favorite"
+            app:showAsAction="always" />
+    <item
+            android:id="@+id/action_share"
+            android:orderInCategory="100"
+            android:title="Bagikan"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/action_report"
+            android:orderInCategory="100"
+            android:title="Laporkan"
+            app:showAsAction="never" />
+
+</menu>

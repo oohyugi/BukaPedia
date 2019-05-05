@@ -9,4 +9,8 @@
     <color name="softBlack">#3b444b</color>
     <color name="black">#000</color>
     <color name="productColor">#bbdefb</color>
+    <color name="darkGrey">#A9A9A9</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="transparantwhite">#33FFFFFF</color>
+    <color name="transparantBlack">#1A000000</color>
 </resources>

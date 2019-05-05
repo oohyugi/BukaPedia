@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.oohyugi.bukasempak.R
 import com.oohyugi.bukasempak.model.ItemsMdl
 import com.oohyugi.bukasempak.model.ProductMdl
@@ -18,6 +19,7 @@ import com.oohyugi.bukasempak.model.ProductsItemMdl
 import com.oohyugi.bukasempak.utils.formatCurrency
 import com.oohyugi.bukasempak.utils.indonesiaFormat
 import com.oohyugi.bukasempak.utils.setStrikeStrought
+import com.oohyugi.bukasempak.view.detail.ProductDetailActivity
 
 /**
  * Created by oohyugi on 2019-04-25.
@@ -75,6 +77,9 @@ class ProductVerticalListAdapterBL(
             holder.lyStock.visibility = View.VISIBLE
         }else holder.lyStock.visibility = View.GONE
 
+        holder.itemView.setOnClickListener {
+            ProductDetailActivity.startThisActivity(context, Gson().toJson(item))
+        }
     }
 
 

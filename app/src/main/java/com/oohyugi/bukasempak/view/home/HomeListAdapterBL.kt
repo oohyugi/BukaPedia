@@ -215,6 +215,8 @@ class HomeListAdapterBL(private val context: Activity, private val list: List<BL
 
     interface OnItemClickListener {
 
+        fun onClick(mdata:Any?,position: Int)
+
     }
 
     companion object {

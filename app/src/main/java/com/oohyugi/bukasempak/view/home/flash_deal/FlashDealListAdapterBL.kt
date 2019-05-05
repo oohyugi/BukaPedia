@@ -11,10 +11,12 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.oohyugi.bukasempak.R
 import com.oohyugi.bukasempak.model.*
 import com.oohyugi.bukasempak.utils.formatCurrency
 import com.oohyugi.bukasempak.utils.setStrikeStrought
+import com.oohyugi.bukasempak.view.detail.ProductDetailActivity
 
 /**
  * Created by oohyugi on 2019-04-25.
@@ -73,7 +75,9 @@ class FlashDealListAdapterBL(
         }
 
         holder.lyStock.visibility = View.VISIBLE
-
+//        holder.itemView.setOnClickListener {
+//            ProductDetailActivity.startThisActivity(context, Gson().toJson(item))
+//        }
     }
 
 
